@@ -38,7 +38,7 @@ fromTimeToHour = D.fromTime >> D.hour
 fromTimeToMinute : Time -> Int
 fromTimeToMinute = D.fromTime >> D.minute
 
-fromTimeTo : String -> (Time -> Int)
+fromTimeTo : String -> Time -> Int
 fromTimeTo cltype =
   case cltype of
     "min" -> fromTimeToMinute
@@ -66,12 +66,12 @@ update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
   case msg of
       Tick time ->
-        { model | time = time } ! [ updateFavicon <| (fromTimeTo model.cltype) time ]
+        { model | time = time } ! [ updateFavicon <| fromTimeTo model.cltype time ]
 
 -- VIEW
 view : Model -> Html Msg
 view model =
-      collage canvasWidth canvasHeight [(fromTimeTo model.cltype) model.time
+      collage canvasWidth canvasHeight [fromTimeTo model.cltype model.time
                                        |> toString
                                        |> fromString
                                        |> style textStyle

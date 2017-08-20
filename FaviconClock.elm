@@ -66,7 +66,7 @@ update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
   case msg of
       Tick time ->
-        { model | time = time } ! [ updateFavicon <| fromTimeTo model.cltype time ]
+        { model | time = time } ! [ fromTimeTo model.cltype time |> updateFavicon ]
 
 -- VIEW
 view : Model -> Html Msg

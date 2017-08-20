@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link id="favicon" rel="shortcut icon" type="image/png" href="">
+  </head>
+  <body>
+    <script type="text/javascript" src="favicon-clock.js"></script>
+    <script type="text/javascript">
+     var hash = location.hash.substring(1) || "min";
+     var getClock = function(d) { return hash === "hour" ? d.getHours() : d.getMinutes() };
+     var title = document.querySelector("title");
+     title.text = hash;
+     var favicon = document.querySelector("#favicon");
+     var start = getClock(new Date());
+     var app = Elm.FaviconClock.fullscreen({ cltype: location.hash.substring(1) || "min", time: (new Date()).getTime() });
+     app.ports.updateFavicon.subscribe(function(time) {
+       var canvas = document.querySelector("canvas");
+       favicon.href = canvas.toDataURL("image/png");
+       if (start !== time) location.reload();
+     });
+    </script>
+  </body>
+</html>

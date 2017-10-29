@@ -41,9 +41,9 @@ fromTimeToMinute = D.fromTime >> D.minute
 fromTimeTo : String -> Time -> Int
 fromTimeTo cltype =
   case cltype of
-    "min" -> fromTimeToMinute
+    "min"  -> fromTimeToMinute
     "hour" -> fromTimeToHour
-    _ -> fromTimeToMinute
+    _      -> fromTimeToMinute
 
 -- FLAG
 type alias Flag = Model
@@ -71,11 +71,11 @@ update msg model =
 -- VIEW
 view : Model -> Html Msg
 view model =
-      collage canvasWidth canvasHeight [fromTimeTo model.cltype model.time
-                                       |> toString
-                                       |> fromString
-                                       |> style textStyle
-                                       |> text
+      collage canvasWidth canvasHeight [ fromTimeTo model.cltype model.time
+                                           |> toString
+                                           |> fromString
+                                           |> style textStyle
+                                           |> text
                                        ]
         |> toHtml
 

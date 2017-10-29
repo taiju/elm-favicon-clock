@@ -8,6 +8,7 @@ import Text exposing (fromString, style, Style)
 import Time as T exposing (Time)
 import Date as D
 import Maybe exposing (Maybe(Just))
+import String exposing (padLeft)
 
 -- CONSTANTS
 canvasWidth : Int
@@ -73,6 +74,7 @@ view : Model -> Html Msg
 view model =
       collage canvasWidth canvasHeight [ fromTimeTo model.cltype model.time
                                            |> toString
+                                           |> padLeft 2 '0'
                                            |> fromString
                                            |> style textStyle
                                            |> text

@@ -7,7 +7,6 @@ import Color exposing (black)
 import Text exposing (fromString, style, Style)
 import Time as T exposing (Time)
 import Date as D
-import Maybe exposing (Maybe(Just))
 import String exposing (padLeft)
 
 -- CONSTANTS

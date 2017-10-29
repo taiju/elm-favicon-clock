@@ -11074,8 +11074,12 @@ var _taiju$elm_favicon_clock$FaviconClock$view = function (model) {
 						_evancz$elm_graphics$Text$style,
 						_taiju$elm_favicon_clock$FaviconClock$textStyle,
 						_evancz$elm_graphics$Text$fromString(
-							_elm_lang$core$Basics$toString(
-								A2(_taiju$elm_favicon_clock$FaviconClock$fromTimeTo, model.cltype, model.time))))),
+							A3(
+								_elm_lang$core$String$padLeft,
+								2,
+								_elm_lang$core$Native_Utils.chr('0'),
+								_elm_lang$core$Basics$toString(
+									A2(_taiju$elm_favicon_clock$FaviconClock$fromTimeTo, model.cltype, model.time)))))),
 				_1: {ctor: '[]'}
 			}));
 };
